@@ -1,0 +1,30 @@
+language: "ko-KR"  # 리뷰 언어를 한국어로 설정
+
+reviews:
+  profile: "strict"  # 리뷰 분위기: chill(편안한), strict(엄격한)
+  tone: "professional"
+  suggestions: true
+  request_changes_workflow: false  # 자동으로 변경 요청을 생성하지 않음 (리뷰어가 수동으로 변경 요청)
+  high_level_summary: true  # 리뷰 결과에 대한 요약을 표시
+  poem: false  # 리뷰를 시 형식으로 출력하지 않음
+  review_status: true  # 리뷰 상태(예: 완료 여부 등)를 표시
+  focus_areas:  # 리뷰 시 중점적으로 확인할 항목
+    - readability       # 가독성
+    - bug_risks         # 버그 발생 가능성
+    - performance       # 성능 관련 문제
+    - best_practices    # 코드 스타일 및 권장 패턴
+  auto_review:
+    enabled: false      # PR 생성 시 자동으로 리뷰 수행
+    drafts: false       # draft 상태의 PR은 리뷰하지 않음
+
+ignore:
+  files:
+    - "**/*.md"         # 마크다운 문서는 리뷰 대상 제외
+    - "docs/**"         # 문서 디렉토리 제외
+    - "test/**"         # 테스트 코드 제외 (원할 경우 포함 가능)
+
+chat:
+  auto_reply: true      # CodeRabbit 챗봇이 자동 응답하도록 설정
+
+limits:
+  max_diff_lines: 500   # 변경된 줄 수가 500줄을 초과하면 리뷰하지 않음 (성능 및 비용 고려)
