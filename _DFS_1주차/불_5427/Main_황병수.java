@@ -29,8 +29,8 @@ public class Main_황병수 {
 
         for (int k = 0; k < testCase; k++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            R = Integer.parseInt(st.nextToken());
             C = Integer.parseInt(st.nextToken());
+            R = Integer.parseInt(st.nextToken());
             map = new char[R][C];
             fireTime = new int[R][C];
             personTime = new int[R][C];
@@ -44,11 +44,11 @@ public class Main_황병수 {
                     map[i][j] = line.charAt(j);
                     fireTime[i][j] = -1;
                     personTime[i][j] = -1;
-                    if (map[i][j] == 'F') {
+                    if (map[i][j] == '*') {
                         fireQ.add(new Node(i, j, 0));
                         fireTime[i][j] = 0;
                     }
-                    if (map[i][j] == 'J') {
+                    if (map[i][j] == '@') {
                         personQ.add(new Node(i, j, 0));
                         personTime[i][j] = 0;
                     }
@@ -68,12 +68,14 @@ public class Main_황병수 {
             }
 
             // 2. 사람 BFS: 불보다 먼저 도달할 수 있는 곳만 이동
+            boolean escaped = false;
             while (!personQ.isEmpty()) {
                 Node cur = personQ.poll();
 
                 // 탈출 조건: 맵 밖으로 나가면 성공
                 if (cur.y == 0 || cur.y == R - 1 || cur.x == 0 || cur.x == C - 1) {
                     sb.append(cur.depth + 1).append('\n');
+                    escaped = true;
                     break;
                 }
 
@@ -90,7 +92,9 @@ public class Main_황병수 {
                     personQ.add(new Node(ny, nx, cur.depth + 1));
                 }
             }
-            sb.append("IMPOSSIBLE").append('\n');
+            if (!escaped) {
+                sb.append("IMPOSSIBLE").append('\n');
+            }
         }
 
         System.out.println(sb);
