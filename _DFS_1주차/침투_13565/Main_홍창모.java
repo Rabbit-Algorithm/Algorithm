@@ -1,10 +1,8 @@
-package _DFS_1주차.침투_13565;
+package 침투_13565;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Main_홍창모 {
@@ -30,11 +28,7 @@ public class Main_홍창모 {
         for (int i = 0; i < M; i++) {
             String line = br.readLine();
             for (int j = 0; j < N; j++) {
-                if (line.charAt(j) == '0') {
-                    MAP[i][j] = 0; // 통과 가능
-                } else {
-                    MAP[i][j] = 1; // 통과 불가능
-                }
+                MAP[i][j] = line.charAt(j) - '0';
             }
         }
 
