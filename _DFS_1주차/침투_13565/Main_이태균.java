@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class 이태균 {
+public class Main_이태균 {
     private static int N, M;
     private static int[][] FIGURE;
     private static boolean[][] VISITED;
