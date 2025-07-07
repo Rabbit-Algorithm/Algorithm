@@ -1,4 +1,4 @@
-package 숨박꼭질_1697;
+package 숨박꼭질3_13549;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class Main_이태균 {
             }
 
             if (now_pos * 2 <= 100000 && !VISITED[now_pos * 2]) {
-                queue.add(new Node(now_pos * 2, now_time + 1));
+                queue.add(new Node(now_pos * 2, now_time));
                 VISITED[now_pos * 2] = true;
             }
             if (now_pos - 1 >= 0 && !VISITED[now_pos - 1]) {
