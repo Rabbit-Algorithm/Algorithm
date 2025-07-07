@@ -1,4 +1,4 @@
-package 불_5427;
+package BFS_바킹독.불_5427;
 
 import java.io.BufferedReader;
 import java.io.IOException;

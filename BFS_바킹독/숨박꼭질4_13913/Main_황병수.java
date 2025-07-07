@@ -1,4 +1,4 @@
-package 숨박꼭질4_13913;
+package BFS_바킹독.숨박꼭질4_13913;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package 침투_13565;
+package BFS.침투_13565;
 
 import java.io.BufferedReader;
 import java.io.IOException;

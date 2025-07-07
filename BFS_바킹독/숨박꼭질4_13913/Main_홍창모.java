@@ -8,7 +8,7 @@
  * 이 작업은 배열의 각 요소에 대해 반복적으로 값을 설정하므로, 초기화 과정에서 CPU 연산이 추가로 발생합니다.
  * 하지만 메모리 사용량 자체는 배열 생성 시 이미 할당되었기 때문에, 초기화로 인해 추가적인 메모리가 사용되지는 않습니다.
  * */
-package 숨박꼭질4_13913;
+package BFS_바킹독.숨박꼭질4_13913;
 
 import java.io.BufferedReader;
 import java.io.IOException;
