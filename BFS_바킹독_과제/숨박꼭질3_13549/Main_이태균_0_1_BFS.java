@@ -3,11 +3,12 @@ package 숨박꼭질3_13549;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class Main_이태균 {
+/**
+ * 가중치가 0 또는 1인 간선을 가진 그래프이므로 BFS -> 0-1 BFS
+ */
+public class Main_이태균_0_1_BFS {
 
     private static int N;
     private static int K;
@@ -24,12 +25,12 @@ public class Main_이태균 {
     }
 
     private static int bfs() {
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(new Node(N, 0));
+        Deque<Node> dq = new ArrayDeque<>();
+        dq.add(new Node(N, 0));
         VISITED[N] = true;
 
-        while (!queue.isEmpty()) {
-            Node node = queue.poll();
+        while (!dq.isEmpty()) {
+            Node node = dq.pollFirst();
             int now_pos = node.pos;
             int now_time = node.time;
 
@@ -38,15 +39,15 @@ public class Main_이태균 {
             }
 
             if (now_pos * 2 <= 100000 && !VISITED[now_pos * 2]) {
-                queue.add(new Node(now_pos * 2, now_time));
+                dq.addFirst(new Node(now_pos * 2, now_time));
                 VISITED[now_pos * 2] = true;
             }
             if (now_pos - 1 >= 0 && !VISITED[now_pos - 1]) {
-                queue.add(new Node(now_pos - 1, now_time + 1));
+                dq.addLast(new Node(now_pos - 1, now_time + 1));
                 VISITED[now_pos - 1] = true;
             }
             if (now_pos + 1 <= 100000 && !VISITED[now_pos + 1]) {
-                queue.add(new Node(now_pos + 1, now_time + 1));
+                dq.addLast(new Node(now_pos + 1, now_time + 1));
                 VISITED[now_pos + 1] = true;
             }
         }
