@@ -12,6 +12,7 @@ public class Main_진은수 {
 
     /**
      * 틀린 코드 입니다.
+     * Q. 종료 조건 코드 이유
      */
 
     public static void main(String[] args) throws IOException {
