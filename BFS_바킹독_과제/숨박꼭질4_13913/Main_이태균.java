@@ -16,7 +16,7 @@ public class Main_이태균 {
     private static int N;
     private static int K;
     private static boolean[] VISITED = new boolean[100001];
-    private static int[] FROM = new int[100001]; // 경로 추적용
+    private static int[] FROM = new int[100001];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
