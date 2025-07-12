@@ -23,38 +23,42 @@ public class Main_진은수 {
         int start = Integer.parseInt(st.nextToken());
         int end = Integer.parseInt(st.nextToken());
 
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{start, 0, end});
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(new Node(start, 0, end));
         boolean[][] visited = new boolean[2][500001];
         visited[0][start] = true;
 
         int time = -1;
 
         while (!queue.isEmpty()) {
-            int[] now = queue.poll();
+            Node now = queue.poll();
 
-            if (visited[now[1] % 2][now[2]]) {
-                time = now[1];
+            if (visited[now.time % 2][now.end]) {
+                time = now.time;
                 break;
             }
 
-            if (now[2] + now[1] + 1 > 50000) {
+            int nextTime = now.time + 1;
+            int nextEndPoint = now.end + nextTime;
+            int nextFlag = (now.time + 1) % 2;
+
+            if (nextEndPoint > 500_000) {
                 break;
             }
 
-            if (now[0] * 2 <= 500000 && !visited[now[1] % 2][now[0] * 2]) {
-                queue.offer(new int[]{now[0] * 2, now[1] + 1, now[2] + now[1] + 1});
-                visited[now[1] % 2][now[0] * 2] = true;
+            if (now.start * 2 <= 500_000 && !visited[nextFlag][now.start * 2]) {
+                queue.offer(new Node(now.start * 2, nextTime, nextEndPoint));
+                visited[nextFlag][now.start * 2] = true;
             }
 
-            if (now[0] - 1 >= 0 && !visited[now[1] % 2][now[0] - 1]) {
-                queue.offer(new int[]{now[0] - 1, now[1] + 1, now[2] + now[1] + 1});
-                visited[now[1] % 2][now[0] - 1] = true;
+            if (now.start - 1 >= 0 && !visited[nextFlag][now.start - 1]) {
+                queue.offer(new Node(now.start - 1, nextTime, nextEndPoint));
+                visited[nextFlag][now.start - 1] = true;
             }
 
-            if (now[0] + 1 <= 500000 && !visited[now[1] % 2][now[0] + 1]) {
-                queue.offer(new int[]{now[0] + 1, now[1] + 1, now[2] + now[1] + 1});
-                visited[now[1] % 2][now[0] + 1] = true;
+            if (now.start + 1 <= 500_000 && !visited[nextFlag][now.start + 1]) {
+                queue.offer(new Node(now.start + 1, nextTime, nextEndPoint));
+                visited[nextFlag][now.start + 1] = true;
             }
 
 
@@ -64,6 +68,17 @@ public class Main_진은수 {
         System.out.println(time);
     }
 
+    private static class Node {
+        int start;
+        int time;
+        int end;
+
+        public Node(int start, int time, int end) {
+            this.start = start;
+            this.time = time;
+            this.end = end;
+        }
+    }
 
 
 }
