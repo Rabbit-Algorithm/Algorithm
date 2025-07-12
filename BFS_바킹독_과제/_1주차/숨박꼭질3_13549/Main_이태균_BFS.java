@@ -1,22 +1,20 @@
-package 숨박꼭질4_13913;
+package BFS_바킹독_과제._1주차.숨박꼭질3_13549;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 import java.util.StringTokenizer;
 
 /**
- * 경로 복원 숨바꼭질
+ * 가중치가 0 또는 1인 간선을 가진 그래프이므로 BFS -> 0-1 BFS
  */
-public class Main_이태균 {
+public class Main_이태균_BFS {
 
     private static int N;
     private static int K;
     private static boolean[] VISITED = new boolean[100001];
-    private static int[] FROM = new int[100001];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,18 +24,6 @@ public class Main_이태균 {
         K = Integer.parseInt(st.nextToken());
 
         System.out.println(bfs());
-
-        Stack<Integer> path = new Stack<>();
-        for (int i = K; i != N; i = FROM[i]) {
-            path.push(i);
-        }
-        path.push(N);
-
-        StringBuilder sb = new StringBuilder();
-        while (!path.isEmpty()) {
-            sb.append(path.pop()).append(" ");
-        }
-        System.out.println(sb);
     }
 
     private static int bfs() {
@@ -55,19 +41,16 @@ public class Main_이태균 {
             }
 
             if (now_pos * 2 <= 100000 && !VISITED[now_pos * 2]) {
-                queue.add(new Node(now_pos * 2, now_time + 1));
+                queue.add(new Node(now_pos * 2, now_time));
                 VISITED[now_pos * 2] = true;
-                FROM[now_pos * 2] = now_pos;
             }
             if (now_pos - 1 >= 0 && !VISITED[now_pos - 1]) {
                 queue.add(new Node(now_pos - 1, now_time + 1));
                 VISITED[now_pos - 1] = true;
-                FROM[now_pos - 1] = now_pos;
             }
             if (now_pos + 1 <= 100000 && !VISITED[now_pos + 1]) {
                 queue.add(new Node(now_pos + 1, now_time + 1));
                 VISITED[now_pos + 1] = true;
-                FROM[now_pos + 1] = now_pos;
             }
         }
 

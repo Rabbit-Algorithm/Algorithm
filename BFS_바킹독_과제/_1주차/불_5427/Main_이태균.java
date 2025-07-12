@@ -1,4 +1,4 @@
-package 불_5427;
+package BFS_바킹독_과제._1주차.불_5427;
 
 import java.io.BufferedReader;
 import java.io.IOException;

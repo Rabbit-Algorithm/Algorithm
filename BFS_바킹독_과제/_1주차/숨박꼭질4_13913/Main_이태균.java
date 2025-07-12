@@ -1,18 +1,22 @@
-package 숨박꼭질3_13549;
+package BFS_바킹독_과제._1주차.숨박꼭질4_13913;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 /**
- * 가중치가 0 또는 1인 간선을 가진 그래프이므로 BFS -> 0-1 BFS
+ * 경로 복원 숨바꼭질
  */
-public class Main_이태균_0_1_BFS {
+public class Main_이태균 {
 
     private static int N;
     private static int K;
     private static boolean[] VISITED = new boolean[100001];
+    private static int[] FROM = new int[100001];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,15 +26,27 @@ public class Main_이태균_0_1_BFS {
         K = Integer.parseInt(st.nextToken());
 
         System.out.println(bfs());
+
+        Stack<Integer> path = new Stack<>();
+        for (int i = K; i != N; i = FROM[i]) {
+            path.push(i);
+        }
+        path.push(N);
+
+        StringBuilder sb = new StringBuilder();
+        while (!path.isEmpty()) {
+            sb.append(path.pop()).append(" ");
+        }
+        System.out.println(sb);
     }
 
     private static int bfs() {
-        Deque<Node> dq = new ArrayDeque<>();
-        dq.add(new Node(N, 0));
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(new Node(N, 0));
         VISITED[N] = true;
 
-        while (!dq.isEmpty()) {
-            Node node = dq.pollFirst();
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
             int now_pos = node.pos;
             int now_time = node.time;
 
@@ -39,16 +55,19 @@ public class Main_이태균_0_1_BFS {
             }
 
             if (now_pos * 2 <= 100000 && !VISITED[now_pos * 2]) {
-                dq.addFirst(new Node(now_pos * 2, now_time));
+                queue.add(new Node(now_pos * 2, now_time + 1));
                 VISITED[now_pos * 2] = true;
+                FROM[now_pos * 2] = now_pos;
             }
             if (now_pos - 1 >= 0 && !VISITED[now_pos - 1]) {
-                dq.addLast(new Node(now_pos - 1, now_time + 1));
+                queue.add(new Node(now_pos - 1, now_time + 1));
                 VISITED[now_pos - 1] = true;
+                FROM[now_pos - 1] = now_pos;
             }
             if (now_pos + 1 <= 100000 && !VISITED[now_pos + 1]) {
-                dq.addLast(new Node(now_pos + 1, now_time + 1));
+                queue.add(new Node(now_pos + 1, now_time + 1));
                 VISITED[now_pos + 1] = true;
+                FROM[now_pos + 1] = now_pos;
             }
         }
 
