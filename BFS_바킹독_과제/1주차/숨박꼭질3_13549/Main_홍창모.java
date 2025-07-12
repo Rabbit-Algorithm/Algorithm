@@ -1,4 +1,4 @@
-package BFS_바킹독.숨박꼭질_1697;
+package 숨박꼭질3_13549;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,10 +10,10 @@ import java.util.StringTokenizer;
 public class Main_홍창모 {
 
     static int ANSWER = 0;
+
     static boolean[] VISITED;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         // 수빈이의 위치
@@ -28,19 +28,18 @@ public class Main_홍창모 {
         System.out.println(ANSWER);
     }
 
-    public static void bfs(int n, int k) {
+    private static void bfs(int n, int k) {
         Deque<Node> dq = new ArrayDeque<>();
 
-        dq.add(new Node(n,0));
         VISITED[n] = true;
+        dq.add(new Node(n, 0));
 
-        while (!dq.isEmpty()) {
+        while( !dq.isEmpty() ) {
             Node node = dq.poll();
 
             int position = node.position;
             int time = node.time;
 
-            // 현재 위치가 동생의 위치와 같은 경우 ANSWER에 시간을 저장하고 종료
             if( position == k ) {
                 ANSWER = time;
                 break;
@@ -48,10 +47,18 @@ public class Main_홍창모 {
 
             int[] calPosition = node.calPosition();
 
-            for( int next : calPosition ) {
-                if( next >= 0 && next <= 100000 && !VISITED[next] ) {
-                    VISITED[next] = true;
-                    dq.add(new Node(next, time+1));
+            for( int i = 0; i < calPosition.length; i++ ) {
+                int nextTime = 0;
+                if( i == 0 ) {
+                    // 순간이동은 시간이 늘어나지 않으므로, 예외처리
+                    nextTime = time;
+                } else {
+                    nextTime = time+1;
+                }
+
+                if( calPosition[i] >= 0 && calPosition[i] <= 100000 && !VISITED[calPosition[i]] ) {
+                    VISITED[calPosition[i]] = true;
+                    dq.add(new Node(calPosition[i], nextTime));
                 }
             }
         }
@@ -59,7 +66,6 @@ public class Main_홍창모 {
 
     static class Node {
         int position;
-
         int time;
 
         public Node(int position, int time) {

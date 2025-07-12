@@ -1,4 +1,4 @@
-package BFS_바킹독.숨박꼭질5_17071;
+package 숨박꼭질5_17071;
 
 
 import java.io.BufferedReader;

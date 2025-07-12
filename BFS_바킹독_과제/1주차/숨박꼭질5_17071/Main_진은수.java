@@ -1,4 +1,4 @@
-package BFS_바킹독_과제.숨박꼭질5_17071;
+package 숨박꼭질5_17071;
 
 import java.io.BufferedReader;
 import java.io.IOException;

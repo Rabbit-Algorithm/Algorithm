@@ -1,4 +1,4 @@
-package BFS_바킹독.불_4179;
+package 불_4179;
 
 import java.io.*;
 import java.util.*;

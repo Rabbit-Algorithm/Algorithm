@@ -1,4 +1,4 @@
-package BFS_바킹독.숨박꼭질3_13549;
+package 숨박꼭질_1697;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class Main_진은수 {
             }
 
             if (now[0]*2 <= 100000 && !visited[now[0]*2]) {
-                queue.offer(new int[]{now[0]*2, now[1]});
+                queue.offer(new int[]{now[0]*2, now[1]+1});
                 visited[now[0]*2] = true;
             }
 

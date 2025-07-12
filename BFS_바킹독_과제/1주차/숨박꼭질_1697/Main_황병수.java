@@ -1,16 +1,14 @@
-package BFS_바킹독.숨박꼭질3_13549;
+package 숨박꼭질_1697;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 public class Main_황병수 {
 
-    static int[] dist;
+    static boolean[] visited;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -18,16 +16,14 @@ public class Main_황병수 {
 
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
-
+        visited = new boolean[100001];
         bfs(N, K);
     }
 
     private static void bfs(int N, int K) {
-        PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+        ArrayDeque<int[]> queue = new ArrayDeque<>();
         queue.add(new int[]{N, 0});
-        
-        dist = new int[100001];
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        visited[N] = true;
 
         while (!queue.isEmpty()) {
             int[] poll = queue.poll();
@@ -40,20 +36,14 @@ public class Main_황병수 {
                 return;
             }
 
-            // 순간이동(0초)
-            if (pos * 2 <= 100000 && dist[pos * 2] > sec) {
-                dist[pos * 2] = sec;
-                queue.add(new int[]{pos * 2, sec});
-            }
-            // 걷기(1초)
-            if (pos - 1 >= 0 && dist[pos - 1] > sec + 1) {
-                dist[pos - 1] = sec + 1;
-                queue.add(new int[]{pos - 1, sec + 1});
-            }
-            if (pos + 1 <= 100000 && dist[pos + 1] > sec + 1) {
-                dist[pos + 1] = sec + 1;
-                queue.add(new int[]{pos + 1, sec + 1});
+            int[] next = {pos * 2, pos - 1, pos + 1};
+            for (int npos : next) {
+                if (npos >= 0 && npos <= 100000 && !visited[npos]) {
+                    visited[npos] = true;
+                    queue.add(new int[]{npos, sec + 1});
+                }
             }
         }
     }
 }
+
