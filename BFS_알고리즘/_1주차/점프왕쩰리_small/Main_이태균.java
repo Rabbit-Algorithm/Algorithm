@@ -1,4 +1,4 @@
-package BFS.점프왕쩰리_small;
+package _1주차.점프왕쩰리_small;
 
 import java.io.BufferedReader;
 import java.io.IOException;

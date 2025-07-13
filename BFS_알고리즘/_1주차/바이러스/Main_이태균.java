@@ -1,4 +1,4 @@
-package BFS.바이러스;
+package _1주차.바이러스;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package BFS.best_grass;
+package _1주차.best_grass;
 
 import java.io.BufferedReader;
 import java.io.IOException;
