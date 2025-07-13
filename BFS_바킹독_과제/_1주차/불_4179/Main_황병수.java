@@ -1,4 +1,8 @@
+<<<<<<< HEAD:BFS_바킹독_과제/_1주차/불_4179/Main_황병수.java
 package 불_4179;
+=======
+package BFS_바킹독_과제.불_4179;
+>>>>>>> 34c30af (aa):BFS_바킹독_과제/불_4179/Main_황병수.java
 
 import java.io.*;
 import java.util.*;

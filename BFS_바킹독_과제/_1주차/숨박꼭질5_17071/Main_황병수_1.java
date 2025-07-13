@@ -1,9 +1,5 @@
-<<<<<<< HEAD:BFS_바킹독_과제/_1주차/숨박꼭질5_17071/Main_황병수.java
-package BFS_바킹독_과제._1주차.숨박꼭질5_17071;
-=======
 package BFS_바킹독_과제.숨박꼭질5_17071;
 
->>>>>>> 34c30af (aa):BFS_바킹독_과제/숨박꼭질5_17071/Main_황병수.java
 
 
 import java.io.BufferedReader;
@@ -13,7 +9,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_황병수 {
+public class Main_황병수_1 {
 
     static final int MAX = 500_000;
 
@@ -30,28 +26,31 @@ public class Main_황병수 {
 
         int time = 0;
         while (true) {
+
             int sister = K + time * (time + 1) / 2;
             if (sister > MAX) {
                 System.out.println(-1);
                 return;
             }
+
             if (visited[sister][time % 2]) {
                 System.out.println(time);
                 return;
             }
+
 
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 int cur = queue.poll();
                 int nextTime = (time + 1) % 2;
                 int[] nextArr = {cur - 1, cur + 1, cur * 2};
+
                 for (int next : nextArr) {
-                    if (next < 0 || next > MAX || visited[next][nextTime]) continue;
+                    if (next < 0 || next > MAX || !visited[cur][nextTime]) continue;
                     visited[next][nextTime] = true;
                     queue.add(next);
                 }
             }
-            time++;
         }
     }
 }
