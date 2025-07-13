@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class 이태균 {
+public class Main_이태균 {
 
     private static int N;
     private static int[][] MAP;
