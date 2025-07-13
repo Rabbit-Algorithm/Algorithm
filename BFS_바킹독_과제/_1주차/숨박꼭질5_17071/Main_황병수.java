@@ -1,10 +1,4 @@
-<<<<<<< HEAD:BFS_바킹독_과제/_1주차/숨박꼭질5_17071/Main_황병수.java
 package BFS_바킹독_과제._1주차.숨박꼭질5_17071;
-=======
-package BFS_바킹독_과제.숨박꼭질5_17071;
-
->>>>>>> 34c30af (aa):BFS_바킹독_과제/숨박꼭질5_17071/Main_황병수.java
-
 
 import java.io.BufferedReader;
 import java.io.IOException;

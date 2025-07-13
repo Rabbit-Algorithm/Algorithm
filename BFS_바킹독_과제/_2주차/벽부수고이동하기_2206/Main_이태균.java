@@ -1,4 +1,4 @@
-package 벽부수고이동하기_2206;
+package BFS_바킹독_과제._2주차.벽부수고이동하기_2206;
 
 import java.io.BufferedReader;
 import java.io.IOException;
