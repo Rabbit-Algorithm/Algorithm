@@ -1,4 +1,4 @@
-package BFS_바킹독_과제._2주차.벽부수고이동하기_2206;
+package _2주차.벽부수고이동하기2_14442;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +11,7 @@ public class Main_이태균 {
 
     private static int N;
     private static int M;
+    private static int K;
     private static int[][] MAP;
     private static boolean[][][] VISITED;
     private static int[] DX = {-1, 0, 1, 0};
@@ -22,13 +23,14 @@ public class Main_이태균 {
 
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
+        K = Integer.parseInt(st.nextToken());
         MAP = new int[N][M];
-        VISITED = new boolean[N][M][2];
+        VISITED = new boolean[N][M][K + 1];
 
         for (int row = 0; row < N; row++) {
-            String[] str = br.readLine().split("");
+            String line = br.readLine();
             for (int col = 0; col < M; col++) {
-                MAP[row][col] = Integer.parseInt(str[col]);
+                MAP[row][col] = line.charAt(col) - '0';
             }
         }
 
@@ -37,7 +39,7 @@ public class Main_이태균 {
 
     private static int bfs() {
         Queue<Node> queue = new LinkedList<>();
-        queue.add(new Node(0, 0, 1, false));
+        queue.add(new Node(0, 0, 1, 0));
         VISITED[0][0][0] = true;
 
         while (!queue.isEmpty()) {
@@ -45,7 +47,7 @@ public class Main_이태균 {
             int now_row = node.row;
             int now_col = node.col;
             int now_time = node.time;
-            boolean isBreak = node.isBreak;
+            int now_breakCnt = node.breakCnt;
 
             if (now_row == N - 1 && now_col == M - 1) {
                 return now_time;
@@ -56,14 +58,14 @@ public class Main_이태균 {
                 int next_col = now_col + DY[i];
 
                 if (next_row >= 0 && next_col >= 0 && next_row < N && next_col < M) {
-                    if (MAP[next_row][next_col] == 1 && !isBreak && !VISITED[next_row][next_col][1]) {
-                        VISITED[next_row][next_col][1] = true;
-                        queue.add(new Node(next_row, next_col, now_time + 1, true));
+                    if (MAP[next_row][next_col] == 1 && !VISITED[next_row][next_col][now_breakCnt + 1] && now_breakCnt < K) {
+                        VISITED[next_row][next_col][now_breakCnt + 1] = true;
+                        queue.add(new Node(next_row, next_col, now_time + 1, now_breakCnt + 1));
                     }
 
-                    if (MAP[next_row][next_col] == 0 && !VISITED[next_row][next_col][isBreak ? 1 : 0]) {
-                        VISITED[next_row][next_col][isBreak ? 1 : 0] = true;
-                        queue.add(new Node(next_row, next_col, now_time + 1, isBreak));
+                    if (MAP[next_row][next_col] == 0 && !VISITED[next_row][next_col][now_breakCnt]) {
+                        VISITED[next_row][next_col][now_breakCnt] = true;
+                        queue.add(new Node(next_row, next_col, now_time + 1, now_breakCnt));
                     }
                 }
             }
@@ -76,13 +78,13 @@ public class Main_이태균 {
         int row;
         int col;
         int time;
-        boolean isBreak;
+        int breakCnt;
 
-        public Node(int row, int col, int time, boolean isBreak) {
+        public Node(int row, int col, int time, int breakCnt) {
             this.row = row;
             this.col = col;
             this.time = time;
-            this.isBreak = isBreak;
+            this.breakCnt = breakCnt;
         }
     }
 
