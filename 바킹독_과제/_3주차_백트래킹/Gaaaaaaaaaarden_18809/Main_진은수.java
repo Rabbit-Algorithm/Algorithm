@@ -10,16 +10,17 @@ public class Main_진은수 {
 
     private static int ySize;
     private static int xSize;
+
     private static int greenNum;
     private static int redNum;
     private static int groundNum;
     private static int totalNum;
-    private static int[][] map;
+
     private static List<Seed> grounds;
-    private static boolean[] visitedSeed;
-    private static boolean[][] visitedMap;
+    private static int[][] map;
     private static Seed[] arr;
-    private static Seed[][] seedMap;
+    private static boolean[] visitedSeed;
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -63,6 +64,8 @@ public class Main_진은수 {
     private static int[] dx = {-1, 1, 0, 0};
     private static int[] dy = {0, 0, -1, 1};
     private static int maxBloom = 0;
+    private static boolean[][] visitedMap;
+    private static Seed[][] seedMap;
 
     // 씨앗 확산 - bfs
     private static void spreadSeed() {
