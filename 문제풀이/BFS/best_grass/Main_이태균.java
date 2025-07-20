@@ -1,4 +1,4 @@
-package _1주차.best_grass;
+package 문제풀이.BFS.best_grass;
 
 import java.io.BufferedReader;
 import java.io.IOException;

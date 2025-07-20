@@ -1,4 +1,4 @@
-package BFS_알고리즘._1주차.그림_1926;
+package 문제풀이.BFS.그림_1926;
 
 import java.io.BufferedReader;
 import java.io.IOException;

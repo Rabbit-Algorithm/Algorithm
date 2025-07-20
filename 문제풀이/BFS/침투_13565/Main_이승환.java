@@ -1,4 +1,4 @@
-package _1주차.침투_13565;
+package 문제풀이.BFS.침투_13565;
 
 import java.io.BufferedReader;
 import java.io.IOException;

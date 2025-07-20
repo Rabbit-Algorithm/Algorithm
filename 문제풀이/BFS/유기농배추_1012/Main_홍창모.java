@@ -1,4 +1,4 @@
-package BFS_알고리즘._1주차.유기농배추_1012;
+package 문제풀이.BFS.유기농배추_1012;
 
 import java.io.BufferedReader;
 import java.io.IOException;

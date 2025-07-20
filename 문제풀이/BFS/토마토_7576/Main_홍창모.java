@@ -1,4 +1,4 @@
-package BFS_알고리즘._1주차.토마토_7576;
+package 문제풀이.BFS.토마토_7576;
 
 import java.io.BufferedReader;
 import java.io.IOException;
