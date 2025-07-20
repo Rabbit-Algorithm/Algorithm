@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Main_황병수 {
     static int N, M, K;
     static int[][] map;
-    static boolean[][][][] visited; // [행][열][벽을 부쉈는지]
+    static boolean[][][] visited; // [행][열][벽을 부쉈는지]
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
 
@@ -35,9 +35,9 @@ public class Main_황병수 {
 
     static int bfs() {
         Queue<Node> queue = new ArrayDeque<>();
-        visited = new boolean[N][M][K + 1][2];
+        visited = new boolean[N][M][K + 1];
         queue.offer(new Node(0, 0, 1, 0, 1)); // 시작은 낮(1)
-        visited[0][0][0][1] = true;
+        visited[0][0][0] = true;
 
         while (!queue.isEmpty()) {
             Node cur = queue.poll();
@@ -52,17 +52,20 @@ public class Main_황병수 {
 
                 if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
 
-                if (map[nx][ny] == 0 && !visited[nx][ny][cur.breakCount][nextDayOrNight]) {
-                    visited[nx][ny][cur.breakCount][nextDayOrNight] = true;
+                // 밤 낮 상관없이 이동 가능
+                if (map[nx][ny] == 0 && !visited[nx][ny][cur.breakCount]) {
+                    visited[nx][ny][cur.breakCount] = true;
                     queue.offer(new Node(nx, ny, cur.depth + 1, cur.breakCount, nextDayOrNight));
-                } else if (map[nx][ny] == 1 && cur.breakCount < K) {
-                    if (cur.dayOrNight == 1 && !visited[nx][ny][cur.breakCount + 1][nextDayOrNight]) {
+                }
+                // 벽을 만났는데 부시고 갈 수 있는 경우
+                else if (map[nx][ny] == 1 && cur.breakCount < K) {
+                    if (cur.dayOrNight == 1 && !visited[nx][ny][cur.breakCount]) {
                         // 낮: 벽 부수고 이동
-                        visited[nx][ny][cur.breakCount + 1][nextDayOrNight] = true;
+                        visited[nx][ny][cur.breakCount] = true;
                         queue.offer(new Node(nx, ny, cur.depth + 1, cur.breakCount + 1, nextDayOrNight));
-                    } else if (cur.dayOrNight == 0 && !visited[cur.x][cur.y][cur.breakCount][nextDayOrNight]) {
+                    } else if (cur.dayOrNight == 0 && !visited[nx][ny][cur.breakCount]) {
                         // 밤: 제자리에서 대기
-                        visited[cur.x][cur.y][cur.breakCount][nextDayOrNight] = true;
+                        visited[cur.x][cur.y][cur.breakCount] = true;
                         queue.offer(new Node(cur.x, cur.y, cur.depth + 1, cur.breakCount, nextDayOrNight));
                     }
                 }

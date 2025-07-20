@@ -33,7 +33,7 @@ public class Main_이태균 {
                 MAP[row][col] = line.charAt(col) - '0';
             }
         }
-        
+
         System.out.println(bfs());
     }
 
@@ -59,13 +59,14 @@ public class Main_이태균 {
                 int next_col = now_col + DY[i];
 
                 if (next_row >= 0 && next_col >= 0 && next_row < N && next_col < M) {
+                    // 이동할 수 있는지 [밤 / 낮 상관없이]
                     if (MAP[next_row][next_col] == 0 && !VISITED[next_row][next_col][now_breakCnt]) {
-                        if (MAP[next_row][next_col] == 0 && !VISITED[next_row][next_col][now_breakCnt]) {
-                            VISITED[next_row][next_col][now_breakCnt] = true;
-                            queue.add(new Node(next_row, next_col, now_time + 1, now_breakCnt, !now_isMorning));
-                        }
-                    } else if (MAP[next_row][next_col] == 1 && now_breakCnt < K) {
-                        if (now_isMorning && !VISITED[next_row][next_col][now_breakCnt + 1]) {
+                        VISITED[next_row][next_col][now_breakCnt] = true;
+                        queue.add(new Node(next_row, next_col, now_time + 1, now_breakCnt, !now_isMorning));
+                    }
+                    // 벽을 만났는데 부시고 갈 수 있는 경우
+                    else if (MAP[next_row][next_col] == 1 && now_breakCnt < K) {
+                        if (now_isMorning && !VISITED[next_row][next_col][now_breakCnt]) {
                             VISITED[next_row][next_col][now_breakCnt + 1] = true;
                             queue.add(new Node(next_row, next_col, now_time + 1, now_breakCnt + 1, false));
                         } else if (!now_isMorning && !VISITED[next_row][next_col][now_breakCnt]) {
