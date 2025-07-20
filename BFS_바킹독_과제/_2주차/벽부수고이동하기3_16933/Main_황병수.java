@@ -58,12 +58,12 @@ public class Main_황병수 {
                     queue.offer(new Node(nx, ny, cur.depth + 1, cur.breakCount, nextDayOrNight));
                 }
                 // 벽을 만났는데 부시고 갈 수 있는 경우
-                else if (map[nx][ny] == 1 && cur.breakCount < K) {
-                    if (cur.dayOrNight == 1 && !visited[nx][ny][cur.breakCount]) {
+                else if (map[nx][ny] == 1 && cur.breakCount < K && !visited[nx][ny][cur.breakCount]) {
+                    if (cur.dayOrNight == 1) {
                         // 낮: 벽 부수고 이동
                         visited[nx][ny][cur.breakCount] = true;
                         queue.offer(new Node(nx, ny, cur.depth + 1, cur.breakCount + 1, nextDayOrNight));
-                    } else if (cur.dayOrNight == 0 && !visited[nx][ny][cur.breakCount]) {
+                    } else if (cur.dayOrNight == 0) {
                         // 밤: 제자리에서 대기
                         visited[cur.x][cur.y][cur.breakCount] = true;
                         queue.offer(new Node(cur.x, cur.y, cur.depth + 1, cur.breakCount, nextDayOrNight));
@@ -76,6 +76,7 @@ public class Main_황병수 {
 
     static class Node {
         int x, y, depth, breakCount, dayOrNight;
+
         Node(int x, int y, int depth, int breakCount, int dayOrNight) {
             this.x = x;
             this.y = y;
