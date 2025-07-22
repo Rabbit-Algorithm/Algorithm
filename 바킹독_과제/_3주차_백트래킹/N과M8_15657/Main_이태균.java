@@ -1,4 +1,4 @@
-package 바킹독_과제._3주차_백트래킹.N과M9;
+package 바킹독_과제._3주차_백트래킹.N과M8_15657;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,6 @@ public class Main_이태균 {
     private static int M;
     private static int[] LIST;
     private static int[] ARR;
-    private static boolean[] VISITED;
     private static StringBuilder SB = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -22,7 +21,6 @@ public class Main_이태균 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         LIST = new int[N];
-        VISITED = new boolean[N];
         ARR = new int[M];
 
         st = new StringTokenizer(br.readLine());
@@ -31,11 +29,11 @@ public class Main_이태균 {
         }
         Arrays.sort(LIST);
 
-        backtracking(0);
+        backtracking(0, 0);
         System.out.print(SB);
     }
 
-    private static void backtracking(int depth) {
+    private static void backtracking(int node, int depth) {
         if (depth == M) {
             for (int i = 0; i < M; i++) {
                 SB.append(ARR[i]).append(" ");
@@ -44,16 +42,9 @@ public class Main_이태균 {
             return;
         }
 
-        int pre = -1;
-        for (int i = 0; i < N; i++) {
-            if (!VISITED[i] && pre != LIST[i]) {
-                VISITED[i] = true;
-                ARR[depth] = LIST[i];
-                pre = LIST[i];
-                backtracking(depth + 1);
-
-                VISITED[i] = false;
-            }
+        for (int i = node; i < N; i++) {
+            ARR[depth] = LIST[i];
+            backtracking(i, depth + 1);
         }
     }
 

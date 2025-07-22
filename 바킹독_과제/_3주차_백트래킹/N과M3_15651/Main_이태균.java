@@ -1,4 +1,4 @@
-package 바킹독_과제._3주차_백트래킹.N과M4;
+package 바킹독_과제._3주차_백트래킹.N과M3_15651;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,11 +20,11 @@ public class Main_이태균 {
         M = Integer.parseInt(st.nextToken());
         LIST = new int[M];
 
-        backtracking(1, 0);
+        backtracking(0);
         System.out.print(SB);
     }
 
-    private static void backtracking(int node, int depth) {
+    private static void backtracking(int depth) {
         if (depth == M) {
             for (int i = 0; i < M; i++) {
                 SB.append(LIST[i]).append(" ");
@@ -33,9 +33,9 @@ public class Main_이태균 {
             return;
         }
 
-        for (int i = node; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
             LIST[depth] = i;
-            backtracking(i, depth + 1);
+            backtracking(depth + 1);
         }
     }
 

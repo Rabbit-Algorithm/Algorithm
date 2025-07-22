@@ -1,8 +1,9 @@
-package 바킹독_과제._3주차_백트래킹.N과M2;
+package 바킹독_과제._3주차_백트래킹.N과M10_15654;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_이태균 {
@@ -10,7 +11,9 @@ public class Main_이태균 {
     private static int N;
     private static int M;
     private static int[] LIST;
+    private static int[] ARR;
     private static boolean[] VISITED;
+    private static StringBuilder SB = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,26 +21,35 @@ public class Main_이태균 {
 
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
+        LIST = new int[N];
+        VISITED = new boolean[N];
+        ARR = new int[M];
 
-        LIST = new int[M];
-        VISITED = new boolean[N + 1];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            LIST[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.sort(LIST);
 
         backtracking(0, 0);
+        System.out.print(SB);
     }
 
     private static void backtracking(int node, int depth) {
         if (depth == M) {
             for (int i = 0; i < M; i++) {
-                System.out.print(LIST[i] + " ");
+                SB.append(ARR[i]).append(" ");
             }
-            System.out.println();
+            SB.append("\n");
             return;
         }
 
-        for (int i = node + 1; i <= N; i++) {
-            if (!VISITED[i]) {
+        int pre = -1;
+        for (int i = node; i < N; i++) {
+            if (!VISITED[i] && pre != LIST[i]) {
                 VISITED[i] = true;
-                LIST[depth] = i;
+                ARR[depth] = LIST[i];
+                pre = LIST[i];
                 backtracking(i, depth + 1);
 
                 VISITED[i] = false;

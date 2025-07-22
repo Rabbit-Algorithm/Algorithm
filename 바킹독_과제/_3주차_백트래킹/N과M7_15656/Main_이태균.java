@@ -1,9 +1,8 @@
-package 바킹독_과제._3주차_백트래킹.N과M8;
+package 바킹독_과제._3주차_백트래킹.N과M7_15656;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_이태균 {
@@ -27,7 +26,6 @@ public class Main_이태균 {
         for (int i = 0; i < N; i++) {
             LIST[i] = Integer.parseInt(st.nextToken());
         }
-        Arrays.sort(LIST);
 
         backtracking(0, 0);
         System.out.print(SB);

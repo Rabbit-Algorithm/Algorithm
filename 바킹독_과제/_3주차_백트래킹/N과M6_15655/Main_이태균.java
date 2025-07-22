@@ -1,4 +1,4 @@
-package 바킹독_과제._3주차_백트래킹.N과M10;
+package 바킹독_과제._3주차_백트래킹.N과M6_15655;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,12 +44,10 @@ public class Main_이태균 {
             return;
         }
 
-        int pre = -1;
         for (int i = node; i < N; i++) {
-            if (!VISITED[i] && pre != LIST[i]) {
+            if (!VISITED[i]) {
                 VISITED[i] = true;
                 ARR[depth] = LIST[i];
-                pre = LIST[i];
                 backtracking(i, depth + 1);
 
                 VISITED[i] = false;
