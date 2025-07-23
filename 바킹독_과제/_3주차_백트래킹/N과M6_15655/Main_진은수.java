@@ -1,4 +1,4 @@
-package 바킹독_과제._3주차_백트래킹.N과M5_15654;
+package 바킹독_과제._3주차_백트래킹.N과M6_15655;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class Main_진은수 {
 
     /**
-     * N과 M(5)
+     * N과 M(6)
      */
 
     private static int num;
@@ -38,12 +38,12 @@ public class Main_진은수 {
 
         Arrays.sort(arr);
 
-        dfs(0);
+        dfs(0, -1);
 
     }
 
 
-    private static void dfs(int depth) {
+    private static void dfs(int depth, int before) {
 
         if (depth == size) {
 
@@ -57,10 +57,10 @@ public class Main_진은수 {
 
 
         for (int i = 0 ; i < num ; i++) {
-            if (!visited[i]) {
+            if (!visited[i] && arr[i] > before) {
                 visited[i] = true;
                 answers[depth] = arr[i];
-                dfs(depth+1);
+                dfs(depth+1, arr[i]);
                 visited[i] = false;
             }
         }

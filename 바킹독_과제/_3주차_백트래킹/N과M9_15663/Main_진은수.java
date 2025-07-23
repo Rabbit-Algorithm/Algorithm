@@ -1,15 +1,14 @@
-package 바킹독_과제._3주차_백트래킹.N과M5_15654;
+package 바킹독_과제._3주차_백트래킹.N과M9_15663;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main_진은수 {
 
     /**
-     * N과 M(5)
+     * N과 M(9)
      */
 
     private static int num;
@@ -17,6 +16,7 @@ public class Main_진은수 {
     private static boolean[] visited;
     private static int[] answers;
     private static int[] arr;
+    private static Set<String> set = new LinkedHashSet<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -40,6 +40,10 @@ public class Main_진은수 {
 
         dfs(0);
 
+        for (String s : set) {
+            System.out.println(s);
+        }
+
     }
 
 
@@ -47,10 +51,11 @@ public class Main_진은수 {
 
         if (depth == size) {
 
+            String str = "";
             for (int value : answers) {
-                System.out.print(value + " ");
+                str += value + " ";
             }
-            System.out.println();
+            set.add(str);
 
             return;
         }

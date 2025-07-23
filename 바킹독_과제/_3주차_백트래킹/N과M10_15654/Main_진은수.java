@@ -1,15 +1,17 @@
-package 바킹독_과제._3주차_백트래킹.N과M5_15654;
+package 바킹독_과제._3주차_백트래킹.N과M10_15654;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Main_진은수 {
 
     /**
-     * N과 M(5)
+     * N과 M(10)
      */
 
     private static int num;
@@ -17,6 +19,7 @@ public class Main_진은수 {
     private static boolean[] visited;
     private static int[] answers;
     private static int[] arr;
+    private static Set<String> set = new LinkedHashSet<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -38,29 +41,34 @@ public class Main_진은수 {
 
         Arrays.sort(arr);
 
-        dfs(0);
+        dfs(0, -1);
+
+        for (String s : set) {
+            System.out.println(s);
+        }
 
     }
 
 
-    private static void dfs(int depth) {
+    private static void dfs(int depth, int before) {
 
         if (depth == size) {
 
+            String str = "";
             for (int value : answers) {
-                System.out.print(value + " ");
+                str += value + " ";
             }
-            System.out.println();
+            set.add(str);
 
             return;
         }
 
 
         for (int i = 0 ; i < num ; i++) {
-            if (!visited[i]) {
+            if (!visited[i] && arr[i] >= before) {
                 visited[i] = true;
                 answers[depth] = arr[i];
-                dfs(depth+1);
+                dfs(depth+1, arr[i]);
                 visited[i] = false;
             }
         }
