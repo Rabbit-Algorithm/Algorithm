@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main_황병수 {
-
     static int N, M, GREEN, RED;
     static int[][] map;
     static List<int[]> candidates = new ArrayList<>();
