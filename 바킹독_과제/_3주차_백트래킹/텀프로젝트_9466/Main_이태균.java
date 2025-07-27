@@ -46,7 +46,7 @@ public class Main_이태균 {
         if (!VISITED[next]) {
             dfs(next);
         }
-        
+
         if (!CYCLED[next]) {
             COUNT++;
             for (int i = next; i != node; i = ARR[i]) {
