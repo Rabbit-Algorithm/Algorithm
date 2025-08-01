@@ -3,9 +3,8 @@ package 바킹독_과제._4주차_백트래킹.NQueen_9663;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
-public class Main_진은수 {
+public class Main_진은수1 {
 
     /**
      * N-Queen
