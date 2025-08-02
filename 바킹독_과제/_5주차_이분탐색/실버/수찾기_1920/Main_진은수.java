@@ -1,4 +1,4 @@
-package 바킹독_과제._5주차_이분탐색.수찾기_1920;
+package 바킹독_과제._5주차_이분탐색.실버.수찾기_1920;
 
 import java.io.BufferedReader;
 import java.io.IOException;

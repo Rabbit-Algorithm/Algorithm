@@ -1,4 +1,4 @@
-package 바킹독_과제._5주차_이분탐색.숫자카드2_10816;
+package 바킹독_과제._5주차_이분탐색.실버.숫자카드2_10816;
 
 import java.io.BufferedReader;
 import java.io.IOException;

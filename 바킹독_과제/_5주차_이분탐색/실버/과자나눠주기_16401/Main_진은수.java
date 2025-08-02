@@ -1,11 +1,8 @@
-package 바킹독_과제._5주차_이분탐색.과자나눠주기_16401;
+package 바킹독_과제._5주차_이분탐색.실버.과자나눠주기_16401;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Main_진은수 {

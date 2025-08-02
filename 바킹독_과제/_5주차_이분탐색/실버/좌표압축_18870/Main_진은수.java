@@ -1,10 +1,9 @@
-package 바킹독_과제._5주차_이분탐색.좌표압축_18870;
+package 바킹독_과제._5주차_이분탐색.실버.좌표압축_18870;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main_진은수 {
 

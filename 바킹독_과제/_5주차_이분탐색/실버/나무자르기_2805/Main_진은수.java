@@ -1,16 +1,15 @@
-package 바킹독_과제._5주차_이분탐색.랜선자르기_1654;
+package 바킹독_과제._5주차_이분탐색.실버.나무자르기_2805;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_진은수 {
 
     /**
-     * 랜선 자르기
-     * https://www.acmicpc.net/problem/1654
+     * 나무 자르기
+     * https://www.acmicpc.net/problem/2805
      * 실버2
      */
 
@@ -19,17 +18,19 @@ public class Main_진은수 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+
         StringTokenizer st = new StringTokenizer(br.readLine());
         int num = Integer.parseInt(st.nextToken());
-        int size = Integer.parseInt(st.nextToken());
+        int remain = Integer.parseInt(st.nextToken());
 
         long low = 1;
         long high = 1;
 
-        long[] arr = new long[num];
+        st = new StringTokenizer(br.readLine());
+        long[] trees = new long[num];
         for (int i = 0; i < num; i++) {
-            arr[i] = Long.parseLong(br.readLine());
-            high = Math.max(high, arr[i]);
+            trees[i] = Long.parseLong(st.nextToken());
+            high = Math.max(high, trees[i]);
         }
 
         while (low <= high) {
@@ -38,10 +39,13 @@ public class Main_진은수 {
             long sum = 0;
 
             for (int i = 0; i < num; i++) {
-                sum += arr[i] / mid;
+                long diff = trees[i] - mid;
+                if (diff > 0) {
+                    sum += diff;
+                }
             }
 
-            if (sum >= size) {
+            if (sum >= remain) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
@@ -50,6 +54,7 @@ public class Main_진은수 {
         }
 
         System.out.println(high);
+
 
     }
 

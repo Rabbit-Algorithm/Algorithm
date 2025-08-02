@@ -1,4 +1,4 @@
-package 바킹독_과제._5주차_이분탐색.예산_2512;
+package 바킹독_과제._5주차_이분탐색.실버.예산_2512;
 
 import java.io.BufferedReader;
 import java.io.IOException;

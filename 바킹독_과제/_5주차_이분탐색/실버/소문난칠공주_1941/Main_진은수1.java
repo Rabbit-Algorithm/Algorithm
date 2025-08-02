@@ -1,4 +1,4 @@
-package 바킹독_과제._5주차_이분탐색.소문난칠공주_1941;
+package 바킹독_과제._5주차_이분탐색.실버.소문난칠공주_1941;
 
 import java.io.BufferedReader;
 import java.io.IOException;
