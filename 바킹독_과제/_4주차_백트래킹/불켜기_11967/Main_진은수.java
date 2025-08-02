@@ -37,6 +37,7 @@ public class Main_진은수 {
         switchList = new List[size][size];
         map[0][0] = 1;
 
+        // 처음 문제 보았을때 이차원 배열에 List 형식이 가장 별로일 거라 생각했음 > 메모리 떄문에
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 switchList[y][x] = new ArrayList<>();
