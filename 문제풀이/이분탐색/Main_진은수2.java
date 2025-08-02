@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main_진은수 {
+public class Main_진은수2 {
 
     /**
      * 차집합
@@ -41,31 +41,11 @@ public class Main_진은수 {
 
 
         for (int i = 0; i < aNum; i++) {
-
-            int aValue = aArr[i];
-
-            int low = 0;
-            int high = bNum - 1;
-
-            boolean same = false;
-
-            while (low <= high) {
-                int mid = (low + high) / 2;
-
-                if (bArr[mid] > aValue) {
-                    high = mid - 1;
-                } else if (bArr[mid] == aValue) {
-                    same = true;
-                    break;
-                } else {
-                    low = mid + 1;
-                }
-            }
-
-            if (!same) {
-                answers.add(aValue);
+            if (Arrays.binarySearch(bArr, aArr[i]) < 0) {
+                answers.add(aArr[i]);
             }
         }
+
 
         System.out.println(answers.size());
         answers.sort(Comparator.naturalOrder());
