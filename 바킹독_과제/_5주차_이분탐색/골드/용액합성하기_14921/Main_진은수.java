@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_진은수2 {
+public class Main_진은수 {
 
     /**
      * 용액
@@ -13,7 +13,6 @@ public class Main_진은수2 {
      * 골드5
      */
 
-    // 이분탐색 풀이
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
