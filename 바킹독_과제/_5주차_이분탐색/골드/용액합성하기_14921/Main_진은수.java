@@ -8,8 +8,8 @@ import java.util.StringTokenizer;
 public class Main_진은수 {
 
     /**
-     * 용액
-     * https://www.acmicpc.net/problem/2467
+     * 용액 합성하기
+     * https://www.acmicpc.net/problem/14921
      * 골드5
      */
 

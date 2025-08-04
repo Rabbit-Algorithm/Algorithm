@@ -1,4 +1,4 @@
-package 바킹독_과제._5주차_이분탐색.실버.누가이길까_28449;
+package 바킹독_과제._5주차_이분탐색.골드.누가이길까_28449;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -9,8 +9,8 @@ import java.util.StringTokenizer;
 public class Main_진은수 {
 
     /**
-     * 공유기 설치
-     * https://www.acmicpc.net/problem/2110
+     * 합이 0
+     * https://www.acmicpc.net/problem/3151
      * 골드4
      */
 
@@ -35,15 +35,12 @@ public class Main_진은수 {
                 int sum = arr[i] + arr[j];
                 int target = (sum * -1);
 
-                int up = upperBound(arr, target);
-                int down = lowerBound(arr, target);
+                int up = upperBound(arr, target, j+1);
+                int down = lowerBound(arr, target, j+1);
                 int abs = up - down;
 
-                if (abs > 0 && down > j) {
-                    count++;
-                }
-                else  if (abs > 1 && down < j && up > j) {
-                    count+= up-j;
+                if (abs > 0) {
+                    count += abs;
                 }
 
             }
@@ -55,8 +52,8 @@ public class Main_진은수 {
     }
 
 
-    private static int upperBound(int[] arr, int target) {
-        int low = 0;
+    private static int upperBound(int[] arr, int target, int start) {
+        int low = start;
         int high = arr.length;
 
         while (low < high) {
@@ -73,8 +70,8 @@ public class Main_진은수 {
     }
 
 
-    private static int lowerBound(int[] arr, int target) {
-        int low = 0;
+    private static int lowerBound(int[] arr, int target, int start) {
+        int low = start;
         int high = arr.length;
 
         while (low < high) {
