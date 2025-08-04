@@ -16,48 +16,44 @@ public class Main_진은수 {
      * 골드4
      */
 
-    private static int num;
-    private static long max = 0;
-    private static long[] arr;
-    private static boolean[] visited;
-    private static Set<Long> set = new HashSet<>();
 
+    /**
+     * https://kimtaesoo99.tistory.com/149
+     * 리뷰때 블로그 링크 방식이랑 비교! 시간차이 남. 백준확인
+     */
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        num = Integer.parseInt(br.readLine());
-        arr = new long[num];
-        visited = new boolean[num];
+        int num = Integer.parseInt(br.readLine());
+        long[] arr = new long[num];
+
         for (int i = 0; i < num; i++) {
             arr[i] = Long.parseLong(br.readLine());
-            set.add(arr[i]);
         }
+        Arrays.sort(arr);
 
-        dfs(0, -1, 0);
-
-        System.out.println(max);
-
-    }
-
-    private static void dfs(int depth, int before, long sum) {
-
-        if (depth == 3) {
-
-            if (set.contains(sum)) {
-                max = Math.max(max, sum);
-            }
-            return;
-        }
-
-        for (int i = before + 1; i < num; i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                dfs(depth + 1, i, sum + arr[i]);
-                visited[i] = false;
+        Set<Long> set = new HashSet<>();
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num; j++) {
+                set.add(arr[i] + arr[j]);
             }
         }
+
+
+        for (int i = num - 1; i >= 0; i--) {
+            for (int j = num - 1; j >= 0; j--) {
+                long minus = arr[i] - arr[j];
+
+                if (set.contains(minus)) {
+                    System.out.println(arr[i]);
+                    return;
+                }
+
+            }
+        }
+
 
 
     }
