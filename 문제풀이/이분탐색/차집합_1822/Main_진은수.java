@@ -1,4 +1,4 @@
-package 문제풀이.이분탐색;
+package 문제풀이.이분탐색.차집합_1822;
 
 import java.io.BufferedReader;
 import java.io.IOException;
