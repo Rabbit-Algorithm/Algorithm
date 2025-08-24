@@ -3,7 +3,6 @@ package 바킹독_과제._5주차_이분탐색.골드.가장긴증가하는부�
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_이태균 {
@@ -25,15 +24,21 @@ public class Main_이태균 {
         int length = 0;
 
         for (int i = 0; i < N; i++) {
-            int pos = Arrays.binarySearch(list, 0, length, ARR[i]);
-            if (pos < 0) pos = -(pos + 1);
-
+            int pos = lowerBound(list, 0, length, ARR[i]);
             list[pos] = ARR[i];
-            if (pos == length) {
-                length++;
-            }
+            if (pos == length) length++;
         }
 
         System.out.println(length);
     }
+
+    private static int lowerBound(int[] list, int left, int right, int key) {
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (list[mid] < key) left = mid + 1;
+            else right = mid;
+        }
+        return left;
+    }
 }
+
