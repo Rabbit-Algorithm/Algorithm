@@ -22,7 +22,6 @@ public class Main_홍창모 {
         PLANETS = new int[M][N];
         SORT_PLANETS = new int[M][N];
 
-
         for( int i = 0; i < M; i++ ) {
             st = new StringTokenizer(br.readLine());
 
@@ -41,6 +40,7 @@ public class Main_홍창모 {
                 PLANETS[i][j] = binarySearch(SORT_PLANETS[i], PLANETS[i][j]);
             }
         }
+
         int cnt = 0;
         for (int i = 0; i < M; i++) {
             for (int j = i + 1; j < M; j++) {

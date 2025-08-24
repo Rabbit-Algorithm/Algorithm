@@ -31,6 +31,7 @@ public class Main_홍창모 {
         System.out.println(SB);
     }
 
+
     private static int binarySearch(int target) {
         int lt = 0;
         int rt = sortedUnique.length - 1;
