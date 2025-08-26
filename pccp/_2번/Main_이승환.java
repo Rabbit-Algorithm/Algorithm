@@ -33,7 +33,7 @@ public class Main_이승환 {
 
 
 
-        new Node(1,new Node(4));
+//        new Node(1,new Node(4));
 
 
 
