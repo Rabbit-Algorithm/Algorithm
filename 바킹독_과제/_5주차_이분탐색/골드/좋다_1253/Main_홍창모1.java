@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_홍창모 {
+public class Main_홍창모1 {
 
     static int n, answer = 0;
 
