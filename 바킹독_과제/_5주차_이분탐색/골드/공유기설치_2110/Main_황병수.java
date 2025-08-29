@@ -15,6 +15,7 @@ public class Main_황병수 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
+        System.out.println("sad");
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
