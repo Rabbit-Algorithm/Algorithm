@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class Main_황병수 {
     static int N, M;
     static int[] homeList;
-    static  int[] sumList;
+    static int[] diff;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,23 +19,54 @@ public class Main_황병수 {
         M = Integer.parseInt(st.nextToken());
 
         homeList = new int[N];
-        sumList = new int[N];
+        diff = new int[N - 1];
 
         for (int i = 0; i < N; i++) {
-            homeList[i] = Integer.parseInt(st.nextToken());
+            homeList[i] = Integer.parseInt(br.readLine());
         }
 
         Arrays.sort(homeList);
 
-        for (int i = N - 1; i > 1; i--) {
-            for (int j = N - 2; j > 0; j--) {
-                sumList[j] = homeList[i] - homeList[j];
+        for (int i = 0; i < homeList.length - 1; i++) {
+            diff[i] = homeList[i + 1] - homeList[i];
+        }
+
+        System.out.println("binarySearch() = " + binarySearch());
+
+    }
+
+    private static int binarySearch() {
+        int left = 1;
+        int right = homeList[N - 1] - homeList[0];
+        int result = 0;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int available = getCnt(mid);
+
+            if (available >= M) {
+                result = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
 
-        Arrays.sort(sumList);
+        return result;
+    }
 
+    private static int getCnt(int target) {
+        int cnt = 1;
+        int sum = 0;
+        for (int i = 0; i < diff.length; i++) {
+            if (sum + diff[i] < target) {
+                sum += diff[i];
+            } else {
+                cnt++;
+                sum = 0;
+            }
+        }
 
-
+        return cnt;
     }
 }

@@ -81,14 +81,6 @@ public class Main_진은수2 {
         }
 
         System.out.println(answer);
-
-
-
-
-
-
-
-
     }
 
 

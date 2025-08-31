@@ -12,6 +12,7 @@ public class Main_황병수 {
 
     static int N,M,S,E;
     static List<int[]>[] islands;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
