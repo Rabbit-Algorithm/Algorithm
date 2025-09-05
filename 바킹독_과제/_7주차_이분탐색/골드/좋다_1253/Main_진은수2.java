@@ -3,10 +3,9 @@ package _7주차_이분탐색.골드.좋다_1253;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class Main_진은수 {
+public class Main_진은수2 {
 
     /**
      * 좋다
@@ -27,23 +26,44 @@ public class Main_진은수 {
         for (int i = 0; i < num; i++) {
             arr[i] = Long.parseLong(st.nextToken());
         }
-
         Arrays.sort(arr);
 
-        long count = 0;
-        for (int i = 0; i < num; i++) {
-            for (int j = i + 1; j < num; j++) {
-                long sum = arr[i] + arr[j];
-                int index = Arrays.binarySearch(arr, sum);
 
-                if (index >= 0) {
-                    if (!visited[index]) {
-                        visited[index] = true;
+        int count = 0;
+        for (int i = 0; i < num; i++) {
+            int high = num -1;
+            int low = 0;
+
+            while (low < high) {
+
+
+                if (low == i) {
+                    low++;
+                    continue;
+                }
+
+                if (high == i) {
+                    high--;
+                    continue;
+                }
+
+                long sum = arr[low] + arr[high];
+
+                if (sum == arr[i]) {
+                    if (!visited[i]) {
+                        visited[i] = true;
                         count++;
                     }
+
+                    break;
+                } else if (sum < arr[i]) {
+                    low++;
+                } else {
+                    high--;
                 }
 
             }
+
         }
 
         System.out.println(count);
