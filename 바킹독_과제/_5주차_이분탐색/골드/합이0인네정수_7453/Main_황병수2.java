@@ -83,6 +83,8 @@ public class Main_황병수2 {
         return left;
     }
 
+
+    // 1 1 2 2 2 2 2 3 3 4 5
     // target 초과인 첫 번째 위치
     static int upperBound(int[] arr, int target) {
         int left = 0;

@@ -49,7 +49,6 @@ public class Main_진은수 {
         }
 
         System.out.println(high);
-
     }
 
 
