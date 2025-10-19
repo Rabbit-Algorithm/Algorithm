@@ -38,8 +38,8 @@ public class Main_황병수 {
 
         // 점화식 , NList[i] = NList[i - 1] == 1? 0 : 1;
 
-        for (int i = 1; i < N; i++) {
-            NList[i] =
-        }
+//        for (int i = 1; i < N; i++) {
+//            NList[i] =
+//        }
     }
 }
